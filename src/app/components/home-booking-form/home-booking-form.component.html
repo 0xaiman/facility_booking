@@ -1,0 +1,54 @@
+<!-- Facility Booking Form -->
+<form class="flex flex-col lg:flex-row gap-2 lg:gap-0 max-w-screen-lg mx-auto">
+  <!-- Facility Selection -->
+  <div class="flex-grow max-w-screen">
+    <select
+      id="facility"
+      name="facility"
+      class="block w-full border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+    >
+      <option value="">Select a facility</option>
+      <option>Meeting Room 1</option>
+      <option>Meeting Room 2</option>
+      <option>Meeting Room 3</option>
+      <option>Activity Room 1</option>
+      <option>Activity Room 2</option>
+      <option>Activity Room 3</option>
+    </select>
+  </div>
+
+  <!-- Start Time Selection -->
+  <div class="flex-grow">
+    <select
+      id="startTime"
+      name="startTime"
+      class="block w-full border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+    >
+      <option value="">Select start time</option>
+      <option>10:00 AM</option>
+      <option>11:00 AM</option>
+      <option>12:00 PM</option>
+      <option>1:00 PM</option>
+    </select>
+  </div>
+
+  <!-- End Time Selection -->
+  <div class="flex-grow">
+    <select
+      id="endTime"
+      name="endTime"
+      class="block w-full border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
+    >
+      <option value="">Select end time</option>
+      <option>10:00 AM</option>
+      <option>11:00 AM</option>
+      <option>12:00 PM</option>
+      <option>1:00 PM</option>
+    </select>
+  </div>
+
+  <!-- Book Button -->
+  <button type="submit" class="w-full lg:w-1/6 p-2 lg:p-0 bg-black text-white">
+    BOOK
+  </button>
+</form>

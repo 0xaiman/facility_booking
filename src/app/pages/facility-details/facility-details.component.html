@@ -1,0 +1,124 @@
+<div class="flex flex-col lg:flex-row">
+  <img
+    src="{{ facility?.image }}"
+    alt="facility {{ facility?.room }} image"
+    class="lg:w-1/2 h-full"
+  />
+  <div class="m-4">
+    <h2 class="text-4xl text-black">{{ facility?.room }}</h2>
+    <p>Capacity : {{ facility?.capacity }}</p>
+    <p>
+      Facility Room X is a spacious, modern meeting space ideal for team
+      discussions, client presentations, and workshops. Designed to accommodate
+      up to 12 people, the room features high-speed Wi-Fi, a large-screen TV for
+      presentations, and a whiteboard for brainstorming sessions. The
+      comfortable seating and natural lighting create a professional yet
+      inviting atmosphere, perfect for productive meetings. Conveniently located
+      and easy to reserve, Facility Room X is equipped with everything you need
+      to ensure a successful gathering. Book now and elevate your meeting
+      experience.
+    </p>
+    <form [formGroup]="bookingForm" class="flex flex-col gap-2">
+      <label for="bookDate">Booking Date</label>
+      <input id="bookDate" formControlName="bookDate" type="date" />
+      <!-- <label for="bookTime">Booking Time</label>
+      <input id="bookTime" formControlName="bookTime" type="time" /> -->
+      <label for="bookTime">Booking Time</label>
+      <select
+        id="startTime"
+        name="startTime"
+        class="block w-full focus:border-black focus:ring-black sm:text-sm"
+      >
+        <option value="">Select Booking time</option>
+        <option>10:00 AM</option>
+        <option>11:00 AM</option>
+        <option>12:00 PM</option>
+        <option>1:00 PM</option>
+      </select>
+
+      <label for="hoursBooked">Hours</label>
+      <input
+        id="hoursBooked"
+        formControlName="hoursBooked"
+        type="number"
+        min="1"
+        max="6"
+        placeholder="Select how many hours to book"
+      />
+      <div *ngIf="endTime">
+        Your Booking will end at :
+        {{ endTime }}
+      </div>
+      <button
+        class="hover:bg-white hover:text-black border border-black font-bold bg-black text-gray-50 py-4"
+        type="submit"
+        (click)="toggleModal()"
+      >
+        BOOK
+      </button>
+    </form>
+    <!-- MODAL -->
+    <div
+      *ngIf="isModalOpen"
+      class="relative z-10"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        aria-hidden="true"
+      ></div>
+
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div
+          class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+          <div
+            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+          >
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:items-start">
+                <div
+                  class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gray-500 sm:mx-0 sm:h-10 sm:w-10"
+                ></div>
+                <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                    Booking Confirmation
+                  </h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500">
+                      Are you sure you want to book {{ facility?.room }} at TIME
+                      X for Y Hours?
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+            >
+              <button
+                type="button"
+                class="inline-flex w-full justify-center rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black border border-black sm:ml-3 sm:w-auto"
+              >
+                CONFIRM
+              </button>
+              <button
+                (click)="toggleModal()"
+                type="button"
+                class="border border-black mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- MOdal end -->
+  </div>
+</div>
